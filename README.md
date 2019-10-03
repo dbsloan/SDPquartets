@@ -12,7 +12,7 @@ This automation is implemented with a Perl script that has been designed for a U
 
 - **Perl modules:** The provided Perl script should be called by users (`SDPquartets.pl`). Perl is pre-installed in most Mac OSX and Linux distributions. If the `--forks` option is to be used for parallelization, the [Parallel::ForkManager Perl module](https://metacpan.org/pod/Parallel::ForkManager) must be installed.
 
-- **PAUP\*:** The script calls the the [command-line version of PAUP\*](http://phylosolutions.com/paup-test/). It has been tested on paup4a166 but is expected to work on the latest version. If the PAUP\* binaries are installed in a directory in your PATH, you can simply refer to the executable name with the `--paup` argument. If not, provide the full path and executable name with that argument.
+- **PAUP\*:** The script calls the the [command-line version of PAUP\*](http://phylosolutions.com/paup-test/). It has been tested on paup4a166 but is expected to work on the latest version. It does NOT work with the older 4.0b10 version. If the PAUP\* binaries are installed in a directory in your PATH, you can simply refer to the executable name with the `--paup` argument. If not, provide the full path and executable name with that argument.
 
 ## Running SDPquartets.pl:
 The script can be called from the command line to analyze an input character matrix (in Nexus format; see sample\_data subdirectory). The user must also specify an output name, the name/location of the Paup\* command-line executable, and desired options for bootstrapping, parallelization and search methods.
