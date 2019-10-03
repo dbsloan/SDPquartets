@@ -58,10 +58,10 @@ Usage: `perl SDPquartets.pl [arguments]`
    Tree search method:
    
          --search     - Specify "bandb" to change the final tree search method
-         				from the default of a heuristic search with TBR to branch
-         				and bound. If bandb is not turned on, a TBR search will
-         				be run with 100 random addition sequences and up to 50
-         				equally parsimonious trees held. [default: tbr] 
+                        from the default of a heuristic search with TBR to branch
+                        and bound. If bandb is not turned on, a TBR search will
+                        be run with 100 random addition sequences and up to 50
+                        equally parsimonious trees held.  [default: tbr] 
    
    EXAMPLE
    
