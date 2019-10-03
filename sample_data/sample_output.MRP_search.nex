@@ -1,0 +1,22 @@
+#NEXUS 
+
+Begin data;
+	Dimensions ntax=5 nchar=30;
+	Format datatype=standard;
+	Matrix
+A  ??????000000000000000000000000
+B  000000??????111111111111111000
+C  111111111111??????111111111111
+D  000000000000000000000000??????
+E  111111111111111111??????000111
+	;
+End;
+
+
+BEGIN PAUP;
+set crit=parsimony;
+set autoclose=yes warnreset=no notifybeep=no warntsave=no maxtrees=5000 increase=auto;
+bandb multrees=yes;
+ConTree all/grpfreq=no showtree=no strict=yes majrule=no append=yes treefile=sample_output.MRP4.nex;
+END;
+quit;
