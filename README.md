@@ -4,11 +4,11 @@ A Perl script for implementing Split Decomposition with Parsimony and quartet as
 `SDPquartets.pl`
 
 ## Overview: 
-This script automates the multi-step process of taking a binary character matrix (such as presence/absence of retroelement insertions), building maximum parsimony trees for every possible quartet of species within the taxon sample, and using [matrix representation with parsimony (MRP)](https://www.sciencedirect.com/science/article/pii/105579039290035F) to infer an overall species tree based on the set of quartet trees. It also will perform bootstrap resampling of the original character matrix to estimate support for the inferred species relationships. All parsimony searches are implemented in [PAUP\*](https://paup.phylosolutions.com/).
+This script automates the multi-step process of taking a binary character matrix (such as presence/absence of retroelement insertions), building parsimony trees for every possible quartet of species within the taxon sample, and using [matrix representation with parsimony (MRP)](https://www.sciencedirect.com/science/article/pii/105579039290035F) to infer an overall species tree based on the set of quartet trees. It also will perform bootstrap resampling of the original character matrix to estimate support for the inferred species relationships. All parsimony searches are implemented in [PAUP\*](https://paup.phylosolutions.com/).
 
 ## Requirements: 
 
-This automation is implemented with a Perl script that has been designed for a Unix environment (Mac OSX or Linux). It has been tested in Mac OSX 10.14.6 and Linux CentOS 6, but it should work in most Unix environments.
+This automation is implemented with a Perl script that has been designed for a Unix environment (Mac OSX or Linux, not Windows). It has been tested in Mac OSX 10.14.6 and Linux CentOS 6, but it should work in most Unix environments.
 
 - **Perl modules:** The provided Perl script should be called by users (`SDPquartets.pl`). Perl is pre-installed in most Mac OSX and Linux distributions. If the `--forks` option is to be used for parallelization, the [Parallel::ForkManager Perl module](https://metacpan.org/pod/Parallel::ForkManager) must be installed.
 
@@ -49,13 +49,19 @@ Usage: `perl SDPquartets.pl [arguments]`
    
          --forks      - number of forks to run in parallel (default = 1).
                         This option requires the Parallel::ForkManager
-                        Perl module.
+                        Perl module. The optimal number of forks will depend
+                        on the dataset and the hardware available. We have
+                        found that forks can be set well in excess of the 
+                        available number of cores and still produce further
+                        speed-ups
 
    Tree search method:
    
          --search     - Specify "bandb" to change the final tree search method
          				from the default of a heuristic search with TBR to branch
-         				and bound [default: tbr]
+         				and bound. If bandb is not turned on, a TBR search will
+         				be run with 100 random addition sequences and up to 50
+         				equally parsimonious trees held. [default: tbr] 
    
    EXAMPLE
    
@@ -64,7 +70,7 @@ Usage: `perl SDPquartets.pl [arguments]`
 ## Output:
 The script will produce multiple output files with different extensions appended to the base name (e.g., "OUTPUT") provided with `--output`.
 
-- **OUTPUT.MRP.tre:** The final maximum-parsimony species tree (or strict consensus of multiple equally parsimonious trees) in newick format.
+- **OUTPUT.MRP.tre:** The final parsimony species tree (or strict consensus of multiple equally parsimonious trees) in newick format.
 - **OUTPUT.quartets.tre:** A file that contains every quartet tree (in newick format). To address the possibility of equally parsimonious ties for a given quartet of species, the script applies a weighting by writing 6 copies of any quartet tree that is the single most parsimonious resolution, 3 copies each for the best trees when there are two equally most-parsimonious trees, and 2 copies each when all three trees for a quartet of species are equally parsimonious.
 - **OUTPUT.MRP_search.nex:** The Nexus file containing the data matrix created from quartet trees to perform the MRP search for the final species tree.
 - **OUTPUT.last_quartet_log.txt:** This files contains the stdout log produced by PAUP\* during the last quartet-tree parsimony search. It can be checked for warning or errors if runs do not appear to be proceeding properly. Note that PAUP\* logs are not saved for other parts of the analysis such as the MRP search.

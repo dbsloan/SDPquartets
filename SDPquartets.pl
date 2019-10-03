@@ -41,13 +41,20 @@ my $usage =
    
          --forks      - number of forks to run in parallel (default = 1).
                         This option requires the Parallel::ForkManager
-                        Perl module.
+                        Perl module. The optimal number of forks will depend
+                        on the dataset and the hardware available. We have
+                        found that forks can be set well in excess of the 
+                        available number of cores and still produce further
+                        speed-ups.
 
    Tree search method:
    
          --search     - Specify \"bandb\" to change the final tree search
                         method from the default of a heuristic search with
-                        TBR to branch and bound [default: tbr]
+                        TBR to branch and bound. If bandb is not turned on,
+                        a TBR search will be run with 100 random addition
+                        sequences and up to 50 equally parsimonious trees
+                        held. [default: tbr] 
    
    EXAMPLE
          perl $0
