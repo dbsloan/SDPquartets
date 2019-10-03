@@ -76,5 +76,5 @@ Additional output files are generated if the `--bs` option is used to run bootst
 
 If bootstrapping is run and the `--save_reps` options is specified, two additional files are retained after the end of the run for every bootstrap replicate (where replicate number is indicated by XXX).
 
-- **OUTPUT_BSXXX_.quartets.tre:** Same as OUTPUT.quartets.tre (see above) except for the bootstrap resampling.
+- **OUTPUT_BSXXX.quartets.tre:** Same as OUTPUT.quartets.tre (see above) except for the bootstrap resampling.
 - **OUTPUT_BSXXX.MRP_search.nex:** Same as OUTPUT.MRP_search.nex (see above) except for the bootstrap resampling. Note that this is the MRP matrix summarizing quartet trees. The resampled matrices of the original binary characters (e.g., retroelement data) are only stored in memory during the run and not saved to file.
