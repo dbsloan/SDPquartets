@@ -43,7 +43,10 @@ Usage: `perl SDPquartets.pl [arguments]`
    Retain bootstrap replicates:
    
          --save_reps  - Add this flag to retain resampled bootstrap matrices
-         				and quartet trees.
+                        and quartet trees. Be aware that, for datasets with
+                        large numbers of taxa, the quartet tree files can be
+                        very large and require substantial hard disk space if
+                        all bootstrap replicate datasets are retained.
          
    Parallelization:
    
