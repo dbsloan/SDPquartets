@@ -6,6 +6,11 @@ A Perl script for implementing Split Decomposition with Parsimony and quartet as
 ## Overview: 
 This script automates the multi-step process of taking a binary character matrix (such as presence/absence of retroelement insertions), building parsimony trees for every possible quartet of species within the taxon sample, and using [matrix representation with parsimony (MRP)](https://www.sciencedirect.com/science/article/pii/105579039290035F) to infer an overall species tree based on the set of quartet trees. It also will perform bootstrap resampling of the original character matrix to estimate support for the inferred species relationships. All parsimony searches are implemented in [PAUP\*](https://paup.phylosolutions.com/).
 
+## Reference: 
+SDPquartets is described in the following paper:
+
+- Springer MS, Molloy EK, Sloan DB, Simmons MP, Gatesy J. In Press. [ILS-aware analysis of low-homoplasy retroelement insertions: Inference of species trees and introgression using quartets](https://academic.oup.com/jhered/advance-article/doi/10.1093/jhered/esz076/5677528). *Journal of Heredity*.
+
 ## Requirements: 
 
 This automation is implemented with a Perl script that has been designed for a Unix environment (Mac OSX or Linux, not Windows). It has been tested in Mac OSX 10.14.6 and Linux CentOS 6, but it should work in most Unix environments.
